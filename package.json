@@ -1,0 +1,26 @@
+{
+  "name": "odin-todo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack-dev-server --entry ./src/index.js --output-filename ./dist/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zenspace55/odin-todo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zenspace55/odin-todo/issues"
+  },
+  "homepage": "https://github.com/zenspace55/odin-todo#readme",
+  "devDependencies": {
+    "cli": "^1.0.1",
+    "webpack": "^5.74.0",
+    "webpack-dev-server": "^4.9.3"
+  }
+}
