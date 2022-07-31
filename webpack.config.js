@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
     module: {
         rules: [
@@ -15,6 +17,7 @@ module.exports = {
             },
         ],
     },
+    mode: 'development',
     watch: true,
     entry: './src/index.js',
     output: {

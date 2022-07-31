@@ -4,8 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack-dev-server --entry ./src/index.js --output-filename ./dist/main.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
@@ -20,6 +19,10 @@
   "homepage": "https://github.com/zenspace55/odin-todo#readme",
   "devDependencies": {
     "cli": "^1.0.1",
+    "css-loader": "^6.5.1",
+    "date-fns": "^2.29.1",
+    "lodash": "^4.17.21",
+    "style-loader": "^3.3.1",
     "webpack": "^5.74.0",
     "webpack-dev-server": "^4.9.3"
   }
