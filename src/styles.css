@@ -1,12 +1,56 @@
 body{
     margin: 0;
     background-color: rgb(73, 126, 161);
+    height: 100vh;
 }
 
 .sidebar{
     background-color: rgb(233, 233, 233);
+    height: 100vh;
+    flex: 2 0;
+    max-width: 200px;
+    display: flex;
+    flex-direction: column;
+}
+
+.sidebarHeader{
+    font-weight: 700;
 }
 
 .content{
     display: flex;
+}
+
+.todoArea{
+    height: 100vh;
+    flex: 1 0;
+    background-color: rgb(78, 23, 23);
+}
+
+.projectTab{
+    height: 100vh;
+    flex: 4 0;
+    background-color: rgb(255, 255, 255);
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.projectName{
+    font-size: 2em;
+    font-weight: 700;
+    width: 100%;
+    text-align: center;
+}
+
+.projectDescription{
+    font-size: 1.25em;
+    font-weight: 600;
+    width: 100%;
+    text-align: center;
+}
+
+.projectTodo{
+    font-size: 1em;
+    width: 100%;
 }
