@@ -2,7 +2,7 @@ import "./styles.css";
 import pageLoad from "./pageLoad";
 import buildList from "./projectList";
 import {projectFactory, showProject} from "./project";
-import {todoFactory} from "./todo";
+import {showTodo, todoFactory} from "./todo";
 import {format, compareAsc} from 'date-fns';
 
 pageLoad();
@@ -21,3 +21,4 @@ const todo2 = todoFactory("Make dinner", "Make a pot of chili", format(new Date(
 myTodos = [todo1, todo2];
 currentProject = projectFactory("Test Project", "A cool project.", myTodos);
 showProject(currentProject);
+showTodo(todo1);
