@@ -13,8 +13,26 @@ function showTodo(todo){
     }
     const todoPanel = document.createElement("div");
     todoPanel.classList.add("todoPanel");
-    todoPanel.textContent = todo.description;
     todoArea.appendChild(todoPanel);
+
+    let todoName = document.createElement("div");
+    todoName.classList.add("todoChild");
+    todoName.style.fontSize = "2em";
+    todoName.textContent = todo.name;
+    let todoDate = document.createElement("div");
+    todoDate.classList.add("todoChild");
+    todoDate.style.marginLeft = "2em";
+    todoDate.style.fontSize = "1.5em";
+    todoDate.textContent = todo.dueDate;
+    let todoDescription = document.createElement("div");
+    todoDescription.style.marginTop = "2em";
+    todoDescription.classList.add("todoChild");
+    todoDescription.textContent = todo.description;
+    todoPanel.appendChild(todoName);
+    todoPanel.appendChild(todoDate);
+    todoPanel.appendChild(todoDescription);
+
+
 }
 
 export {todoFactory, showTodo};

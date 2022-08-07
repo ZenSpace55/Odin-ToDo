@@ -12,6 +12,7 @@ body{
     max-width: 200px;
     display: flex;
     flex-direction: column;
+    padding: 1em;
 }
 
 .sidebarHeader{
@@ -43,6 +44,7 @@ body{
     font-weight: 700;
     width: 100%;
     text-align: center;
+    padding-top: 1em;
 }
 
 .projectDescription{
@@ -50,11 +52,20 @@ body{
     font-weight: 600;
     width: 100%;
     text-align: center;
+    margin-bottom: 2em;
+}
+
+.activeTodo{
+    background-color: rgb(71, 71, 71);
 }
 
 .projectTodo{
     font-size: 1em;
-    width: 100%;
+    padding: 1em;
+    padding-top: .25em;
+    padding-bottom: .25em;
+    display: flex;
+    justify-content: space-between;
 }
 
 .projectTodo:hover{
@@ -65,5 +76,10 @@ body{
     background-color: rgb(48, 45, 45);
     color: white;
     display: flex;
+    margin: 2em;
+    padding: 1em;
     flex-direction: column;
+}
+
+.todoChild{
 }
