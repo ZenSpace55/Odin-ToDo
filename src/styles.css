@@ -81,5 +81,28 @@ body{
     flex-direction: column;
 }
 
+.todoCreator{
+    display: flex;
+    flex-direction: column;
+    
+}
+
 .todoChild{
 }
+
+.flexRow{
+    display: flex;
+}
+
+.flexColumn{
+    display: flex;
+    flex-direction: column;
+}
+
+label{
+    color: white;
+    font-weight: bold;
+}
+
+.grow { transition: all .2s ease-in-out; }
+.grow:hover { transform: scale(1.1); }

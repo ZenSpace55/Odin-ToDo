@@ -1,4 +1,5 @@
-import {todoFactory, showTodo} from "./todo";
+import { divide } from "lodash";
+import {todoFactory, showTodo, editTodo} from "./todo";
 
 const projectFactory = (name, description, todos) => {
     const removeTodo = (purgedTodo) => {
@@ -22,6 +23,11 @@ function createTodo(project, i){
 
 function toggleComplete(){
     console.log("hello");
+}
+
+function makeNewTodo(project){
+    console.log("new todo here");
+    editTodo();
 }
 
 function showProject(project){
@@ -63,6 +69,14 @@ function showProject(project){
         todoItem.appendChild(todoDate);
         projectTab.appendChild(todoItem);
     }
+    const newSVG = document.createElement("div");
+    newSVG.classList.add("grow");
+    newSVG.addEventListener("click", function() {
+        makeNewTodo(project);
+    });
+    newSVG.style.marginLeft = "auto";
+    newSVG.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" fill="white"><path d="M22.3 38.2V25.7H9.8v-3.4h12.5V9.8h3.4v12.5h12.5v3.4H25.7v12.5Z"/></svg>`;
+    projectTab.appendChild(newSVG);
 }
 
 export {showProject, projectFactory};
