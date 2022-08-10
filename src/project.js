@@ -1,5 +1,6 @@
 import { divide } from "lodash";
 import {todoFactory, showTodo, editTodo} from "./todo";
+import {format, compareAsc} from 'date-fns';
 
 const projectFactory = (name, description, todos) => {
     const removeTodo = (purgedTodo) => {
@@ -27,11 +28,16 @@ function toggleComplete(){
 
 function makeNewTodo(project){
     console.log("new todo here");
-    editTodo();
+    let newTodo = todoFactory();
+    newTodo.dueDate = format(new Date(), 'MMM dd yyyy');
+    editTodo(newTodo, project);
 }
 
 function showProject(project){
     const projectTab = document.getElementById("projectTab");
+    while(projectTab.firstChild){
+        projectTab.removeChild(projectTab.firstChild);
+    }
     const projName = document.createElement("div");
     projName.classList.add("projectName");
     projName.textContent = project.name;
