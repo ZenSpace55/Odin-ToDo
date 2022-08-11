@@ -1,6 +1,7 @@
 import { divide } from "lodash";
 import {todoFactory, showTodo, editTodo} from "./todo";
 import {format, compareAsc} from 'date-fns';
+import {default as moment, Moment} from 'moment';
 
 const projectFactory = (name, description, todos) => {
     const removeTodo = (purgedTodo) => {
@@ -56,7 +57,7 @@ function showProject(project){
         let todoName = document.createElement("div");
         todoName.textContent = project.todos[i].name;
         let todoDate = document.createElement("div");
-        todoDate.textContent = project.todos[i].dueDate;
+        todoDate.textContent = moment(project.todos[i].dueDate).format('MMM Do, YYYY');
         //todoItem.textContent = project.todos[i].name + " | " + project.todos[i].dueDate;
         console.log(project.todos[i].name);
         console.log("i = " + i);

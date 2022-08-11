@@ -2,6 +2,7 @@ import { projectFactory, showProject } from "./project";
 import {format, parse, compareAsc} from 'date-fns';
 import { enUS } from "date-fns/locale";
 import { currentProject } from "./index";
+import {default as moment, Moment} from 'moment';
 
 const todoFactory = (name, description, dueDate) => {
     console.log(name + " created");
@@ -58,6 +59,7 @@ function editTodo(todo, project){
     dateLabel.htmlFor = "todoDate";
     dateLabel.textContent = "Due Date:"
     let dateInput = document.createElement("input");
+    dateInput.defaultValue = moment(new Date()).format('YYYY-MM-DD')
     dateInput.id = "todoDate";
     dateInput.type = "date";
     dateInput.required = true;
@@ -83,6 +85,11 @@ function editTodo(todo, project){
     todoPanel.appendChild(confirmButton);
 }
 
+function removeTodo(todo, project){
+    project.todos.splice(project.todos.indexOf(todo), 1);
+    showProject(project);
+}
+
 function showTodo(todo){
     console.log(todo.toString());
     const todoArea = document.getElementById("todoArea");
@@ -101,7 +108,7 @@ function showTodo(todo){
     todoDate.classList.add("todoChild");
     todoDate.style.marginLeft = "2em";
     todoDate.style.fontSize = "1.5em";
-    todoDate.textContent = todo.dueDate;
+    todoDate.textContent = moment(todo.dueDate).format('MMMM Do, YYYY');
     let todoDescription = document.createElement("div");
     todoDescription.style.marginTop = "2em";
     todoDescription.classList.add("todoChild");
@@ -116,6 +123,13 @@ function showTodo(todo){
         editTodo(todo, currentProject)
     });
     todoPanel.appendChild(editButton);
+
+    let removeButton = document.createElement("button");
+    removeButton.textContent = "Remove";
+    removeButton.addEventListener("click", function(){
+        removeTodo(todo, currentProject)
+    });
+    todoPanel.appendChild(removeButton);
 }
 
 export {todoFactory, showTodo, editTodo};
