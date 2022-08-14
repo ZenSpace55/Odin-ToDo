@@ -15,8 +15,20 @@ body{
     padding: 1em;
 }
 
+.smallProjectName{
+    margin-left: 1em;
+}
+
+.smallProjectName:hover{
+    background-color: rgb(56, 99, 75);
+}
+
 .sidebarHeader{
     font-weight: 700;
+}
+
+.sidebarHeader:hover{
+    background-color: rgb(56, 99, 75);
 }
 
 .content{

@@ -4,9 +4,16 @@ import { enUS } from "date-fns/locale";
 import { currentProject } from "./index";
 import {default as moment, Moment} from 'moment';
 
-const todoFactory = (name, description, dueDate) => {
+const todoFactory = (name, description, dueDate, project) => {
     console.log(name + " created");
-    return {name, description, dueDate};
+    //todoFactory.prototype.removeFromProject = function(){
+    //    this.project.splice(this.project.indexOf(this), 1);
+    //    console.log("removed from: " + this.project.name);
+    //}
+    return {name, description, dueDate, project, removeFromProject(){
+        project.todos.splice(project.indexOf(this), 1);
+        console.log("removed from: " + this.project.name);
+    }};
 };
 
 function confirmTodo(todo, project){
@@ -22,12 +29,19 @@ function confirmTodo(todo, project){
     else{
 
     }*/
-    project.todos.push(todo);
+    //if (!todo){
+        project.todos.push(todo);
+    //}
+    const todoArea = document.getElementById("todoArea");
+    while(todoArea.firstChild){
+        todoArea.removeChild(todoArea.firstChild);
+    }
+
     showProject(project);
     console.log(todo.name);
 }
 
-function editTodo(todo, project){
+function editTodo(todo){
     const todoArea = document.getElementById("todoArea");
     while(todoArea.firstChild){
         todoArea.removeChild(todoArea.firstChild);
@@ -35,6 +49,8 @@ function editTodo(todo, project){
     const todoPanel = document.createElement("div");
     todoPanel.classList.add("todoPanel");
     todoArea.appendChild(todoPanel);
+
+    console.log(todo);
 
     let todoForm = document.createElement("form");
     todoForm.action = "";
@@ -83,10 +99,19 @@ function editTodo(todo, project){
     todoPanel.appendChild(dateDiv);
     todoPanel.appendChild(descriptionDiv);
     todoPanel.appendChild(confirmButton);
+
+    if (todo){
+        document.getElementById("descriptionBox").value = todo.description;
+        nameInput.defaultValue = todo.name;
+        dateInput.defaultValue = moment(todo.dueDate).format('YYYY-MM-DD');
+    }
+
+
 }
 
 function removeTodo(todo, project){
-    project.todos.splice(project.todos.indexOf(todo), 1);
+    //project.todos.splice(project.todos.indexOf(todo), 1);
+    todo.removeFromProject();
     showProject(project);
 }
 

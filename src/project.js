@@ -16,7 +16,7 @@ const projectFactory = (name, description, todos) => {
     return {name, description, todos};
 };
 
-function createTodo(project, i){
+function displayTodo(project, i){
     console.log(project.todos[i].name);
     //let todoArea = document.getElementById("todoArea");
     //todoArea.textContent = project.todos[i].description;
@@ -68,13 +68,17 @@ function showProject(project){
             if (document.querySelector(".activeTodo")){
                 document.querySelector(".activeTodo").classList.toggle("activeTodo");
             }
-            this.classList.toggle("activeTodo");
-            createTodo(project, this.id);
+            todoItem.classList.toggle("activeTodo");
+            displayTodo(project, this.id);
         });
         todoItem.appendChild(todoCheck);
         todoItem.appendChild(todoName);
         todoItem.appendChild(todoDate);
         projectTab.appendChild(todoItem);
+        if (i == 0){
+            todoItem.classList.toggle("activeTodo");
+            showTodo(project.todos[0]);
+        }
     }
     const newSVG = document.createElement("div");
     newSVG.classList.add("grow");
