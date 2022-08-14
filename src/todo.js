@@ -5,15 +5,13 @@ import { currentProject } from "./index";
 import {default as moment, Moment} from 'moment';
 
 const todoFactory = (name, description, dueDate, project) => {
-    console.log(name + " created");
+    //const addToProject = () => project.todos.push(this);
+    const removeFromProject = () => project.todos.splice(project.todos.indexOf(this));
     //todoFactory.prototype.removeFromProject = function(){
     //    this.project.splice(this.project.indexOf(this), 1);
     //    console.log("removed from: " + this.project.name);
     //}
-    return {name, description, dueDate, project, removeFromProject(){
-        project.todos.splice(project.indexOf(this), 1);
-        console.log("removed from: " + this.project.name);
-    }};
+    return {name, description, dueDate, project};
 };
 
 function confirmTodo(todo, project){
@@ -29,9 +27,9 @@ function confirmTodo(todo, project){
     else{
 
     }*/
-    //if (!todo){
+    if (!todo){
         project.todos.push(todo);
-    //}
+    }
     const todoArea = document.getElementById("todoArea");
     while(todoArea.firstChild){
         todoArea.removeChild(todoArea.firstChild);
@@ -92,7 +90,7 @@ function editTodo(todo){
     let confirmButton = document.createElement("button");
     confirmButton.textContent = "Confirm";
     confirmButton.addEventListener("click", function(){
-        confirmTodo(todo, project);
+        confirmTodo(todo, todo.project);
     });
 
     todoPanel.appendChild(nameDiv);
@@ -111,7 +109,8 @@ function editTodo(todo){
 
 function removeTodo(todo, project){
     //project.todos.splice(project.todos.indexOf(todo), 1);
-    todo.removeFromProject();
+    //todo.removeFromProject();
+    project.removeTodo(todo);
     showProject(project);
 }
 
