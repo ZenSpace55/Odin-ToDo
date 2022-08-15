@@ -33,7 +33,7 @@ function makeNewTodo(project){
     editTodo(newTodo, project);
 }
 
-function showProject(project){
+function showProject(project, displayOnly){
     const projectTab = document.getElementById("projectTab");
     while(projectTab.firstChild){
         projectTab.removeChild(projectTab.firstChild);
@@ -79,21 +79,24 @@ function showProject(project){
             showTodo(project.todos[0]);
         }
     }
-    const newSVG = document.createElement("div");
-    newSVG.classList.add("grow");
-    newSVG.addEventListener("click", function() {
-        makeNewTodo(project);
-    });
-    newSVG.style.marginLeft = "auto";
-    newSVG.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" fill="white"><path d="M22.3 38.2V25.7H9.8v-3.4h12.5V9.8h3.4v12.5h12.5v3.4H25.7v12.5Z"/></svg>`;
-    projectTab.appendChild(newSVG);
 
-    let editButton = document.createElement("button");
-    editButton.textContent = "Edit Project";
-    editButton.addEventListener("click", function(){
-        editProject(project);
-    });
-    projectTab.appendChild(editButton);
+    if (!displayOnly){
+        const newSVG = document.createElement("div");
+        newSVG.classList.add("grow");
+        newSVG.addEventListener("click", function() {
+            makeNewTodo(project);
+        });
+        newSVG.style.marginLeft = "auto";
+        newSVG.innerHTML = `<svg xmlns="http://www.w3.org/2000/svg" height="48" width="48" fill="white"><path d="M22.3 38.2V25.7H9.8v-3.4h12.5V9.8h3.4v12.5h12.5v3.4H25.7v12.5Z"/></svg>`;
+        projectTab.appendChild(newSVG);
+
+        let editButton = document.createElement("button");
+        editButton.textContent = "Edit Project";
+        editButton.addEventListener("click", function(){
+            editProject(project);
+        });
+        projectTab.appendChild(editButton);
+    }
 }
 
 function confirmProject(project){

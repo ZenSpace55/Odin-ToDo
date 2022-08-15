@@ -1,27 +1,34 @@
 import { editProject, showProject, projectFactory } from "./project";
+import {default as moment, Moment} from 'moment';
 
 function ShowToday(){
     let todayTodo = projectFactory("Today", "Due Today:");
+    let today = moment(Date.now()).format("DD.MM.YYYY");
+    console.log(today + " TODAY");
     for (let i = 0; i < allProjects.length; i++){
         for (let x = 0; x < allProjects[i].todos.length; x++){
-            if (allProjects[i].todos[x].dueDate == Date.now()){
+            let checkDay = moment(allProjects[i].todos[x].dueDate).format("DD.MM.YYYY");
+            console.log(checkDay);
+            if (checkDay == today){
                 todayTodo.todos.push(allProjects[i].todos[x]);
             }
         }
     }
-    showProject(todayTodo);
+    showProject(todayTodo, true);
 }
 
 function ShowUpcoming(){
     let upcomingTodo = projectFactory("Upcoming", "Due Soon:");
+    let thisMonth = moment(Date.now()).format("MM.YYYY");
     for (let i = 0; i < allProjects.length; i++){
         for (let x = 0; x < allProjects[i].todos.length; x++){
-            if (allProjects[i].todos[x].dueDate == Date.now()){
-                todayTodo.todos.push(allProjects[i].todos[x]);
+            let checkMonth = moment(allProjects[i].todos[x].dueDate).format("MM.YYYY");
+            if (thisMonth == checkMonth){
+                upcomingTodo.todos.push(allProjects[i].todos[x]);
             }
         }
     }
-    showProject(upcomingTodo);
+    showProject(upcomingTodo, true);
 }
 
 function makeNewProject(){

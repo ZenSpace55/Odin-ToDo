@@ -29,7 +29,7 @@ currentProject.addTodo(todo3);
 //todo2.addToProject();
 //todo3.addToProject();
 allProjects.push(currentProject);
-allProjects.push(currentProject);
+//allProjects.push(currentProject);
 console.log("Current todo count: " + currentProject.todos.length);
 console.log("First todo name " + currentProject.todos[0].name);
 console.log(todo1.project.name + " my first project");
